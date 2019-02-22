@@ -1,0 +1,57 @@
+//try not to interfere with local page's js variables
+var cbtBody;
+var cbtPageUrl = location.href;
+
+(function() {
+
+var serverpath='www.getspot.tk';
+	
+	cbtBody=document.getElementsByTagName('body')[0];
+
+	var cbtDivReload = document.createElement("a");
+	cbtDivReload.setAttribute("href",""+ cbtPageUrl +"");
+	cbtDivReload.id='cbtDivReload';
+	cbtDivReload.innerHTML='Atualizar';
+	cbtDivReload.style='background-color: rgba(24, 200, 0, 0.28);';
+	cbtDivReload.style.height='5%';
+	cbtDivReload.style.width='10%';
+	cbtDivReload.style.overflowX='hidden';
+	cbtDivReload.style.overflowY='auto';
+	cbtDivReload.style.border='none';
+	cbtDivReload.style.position='fixed';
+	cbtDivReload.style.bottom='80px';
+	cbtDivReload.style.left='90%';
+	cbtDivReload.style.zIndex=1000;
+
+	cbtBody.appendChild(cbtDivReload);
+	  
+})();
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  while(true) {
+    if ((new Date().getTime() - start) > (milliseconds * 1000)){
+      break;
+    }
+  }
+} 
+  
+$( document ).ready(function() {
+
+    SP_enable_button();
+    $("#lightbox-button").click();
+
+if(typeof doVideoCallback_pp == 'undefined') { 
+
+ document.body.style.backgroundColor = "red";
+ document.innerHTML = '<br>Sem ofertas.'
+
+}else{
+    sleep(120);
+    document.getElementById("cbtDivReload").click();
+}
+});
+
+function showCBTbookmarklet(){
+                        document.getElementById('cbtDivShow').style.display='none';
+}
